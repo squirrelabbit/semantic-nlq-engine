@@ -1,0 +1,67 @@
+{
+  "plan": {
+    "original_question": "2025년 9월 2일 성남시 성별/연령 분포 보여줘 (Mock)",
+    "intent": "SEARCH",
+    "dataset": "sungnam_service_sex_age_pop",
+    "metrics": [
+      "male",
+      "female"
+    ],
+    "filters": {
+      "std_ymd": "20250902",
+      "place_name": "성남시"
+    },
+    "group_by": [
+      "age_band"
+    ],
+    "visualization_type": "bar",
+    "confidence": 0.92,
+    "notes": "Mock response for PoC verification."
+  },
+  "sql": "SELECT age_band, male, female FROM mock_sex_age_distribution WHERE std_ymd = '20250902' AND place_name = '성남시';",
+  "rows": [
+    {
+      "age_band": "0-9",
+      "male": 10234,
+      "female": 9850
+    },
+    {
+      "age_band": "10-19",
+      "male": 13450,
+      "female": 12890
+    },
+    {
+      "age_band": "20-29",
+      "male": 22100,
+      "female": 21420
+    },
+    {
+      "age_band": "30-39",
+      "male": 24880,
+      "female": 23990
+    },
+    {
+      "age_band": "40-49",
+      "male": 20560,
+      "female": 19740
+    },
+    {
+      "age_band": "50-59",
+      "male": 17820,
+      "female": 18510
+    },
+    {
+      "age_band": "60-69",
+      "male": 14670,
+      "female": 15490
+    },
+    {
+      "age_band": "70+",
+      "male": 8920,
+      "female": 10480
+    }
+  ],
+  "insight": {
+    "summary": "30~40대 구간에서 남녀 모두 유입 규모가 가장 높게 나타났습니다."
+  }
+}

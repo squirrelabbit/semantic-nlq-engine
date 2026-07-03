@@ -1,0 +1,45 @@
+{
+  "datasets": [
+    {
+      "table": "place_codes",
+      "name": "지역 코드",
+      "description": "행정동 코드 정보",
+      "synonyms": ["지역", "행정구역"],
+      "dimensions": {
+        "location": ["code", "name", "sgng_cd", "admin_code", "sido_name", "sigungu_name", "eupmyeondong_name", "dongri_name"],
+        "time": ["created_at", "abolished_at"]
+      },
+      "measures": [],
+      "joins": [],
+      "constraints": [
+        "place_codes.created_at IS NULL OR place_codes.created_at <= '{std_ymd}'",
+        "place_codes.abolished_at IS NULL OR place_codes.abolished_at >= '{std_ymd}'"
+      ],
+      "samples": {}
+    },
+    {
+      "table": "test_table_1",
+      "name": "테스트 테이블 1",
+      "description": "테스트용 첫 번째 테이블",
+      "synonyms": ["첫번째", "데이터"],
+      "dimensions": {"time": ["std_ymd"]},
+      "measures": ["value1"],
+      "joins": [],
+      "constraints": []
+    },
+    {
+      "table": "test_table_2",
+      "name": "테스트 테이블 2",
+      "description": "테스트용 두 번째 테이블",
+      "synonyms": ["두번째", "데이터"],
+      "dimensions": {"location": ["hcode"]},
+      "measures": ["value2"],
+      "joins": [],
+      "constraints": []
+    }
+  ],
+  "metrics": [
+    {"name": "값1", "columns": ["value1"]},
+    {"name": "값2", "columns": ["value2"]}
+  ]
+}

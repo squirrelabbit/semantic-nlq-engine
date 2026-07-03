@@ -1,0 +1,40 @@
+version: 1
+last_updated: 2026-01-09
+owner: data-analysis-team
+
+metrics:
+  h_pop:
+    display_name: 주거 인구
+    description: >
+      야간 체류지 기준 인구.
+      해당 지역을 실제 거주지로 삼고 야간에 체류하는 인구를 의미함.
+    domain_meaning: 거주 안정성 및 주거 수요 판단 지표
+    allowed_operations: [sum]
+    unit: 명
+    interpretation_rules:
+      - 성별 또는 연령과 직접적으로 연관지어 해석하지 말 것
+      - 단기 변동보다는 장기 추세 해석에 적합
+
+  w_pop:
+    display_name: 직장 인구
+    description: >
+      주간 체류지 기준 인구.
+      출퇴근을 통해 해당 지역으로 유입되는 근무 목적 인구를 의미함.
+    domain_meaning: 고용·업무 중심지 여부 판단 지표
+    allowed_operations: [sum]
+    unit: 명
+    interpretation_rules:
+      - 주중/주말 비교 시 의미 차이가 큼
+      - 교통·출퇴근 패턴과 연계 해석 가능
+
+  v_pop:
+    display_name: 방문 인구
+    description: >
+      비거주 방문 목적 인구.
+      관광, 쇼핑, 업무, 기타 일시적 방문 목적의 유입 인구를 의미함.
+    domain_meaning: 상업·관광·이벤트 영향 판단 지표
+    allowed_operations: [sum]
+    unit: 명
+    interpretation_rules:
+      - 이벤트/날씨/주말 효과와 연계 해석 가능
+      - 주거 인구와 직접 비교 시 주의 필요

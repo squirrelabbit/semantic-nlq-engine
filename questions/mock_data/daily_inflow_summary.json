@@ -1,0 +1,31 @@
+{
+  "plan": {
+    "original_question": "2025년 9월 2일 성남시 유입인구 요약 (Mock)",
+    "intent": "SEARCH",
+    "dataset": "sungnam_service_inflow_pop",
+    "visualization_type": "single_value",
+    "metrics": [
+      "h_pop",
+      "w_pop",
+      "v_pop"
+    ],
+    "filters": {
+      "std_ymd": "20250902",
+      "place_name": "성남시"
+    },
+    "group_by": [],
+    "confidence": 0.95,
+    "notes": "Mock response for PoC verification."
+  },
+  "sql": "SELECT SUM(t.h_pop) AS h_pop, SUM(t.w_pop) AS w_pop, SUM(t.v_pop) AS v_pop FROM sungnam_service_inflow_pop AS t JOIN place_codes AS pc ON t.hcode = pc.admin_code WHERE t.std_ymd = '20250902' AND pc.name LIKE '%성남시%';",
+  "rows": [
+    {
+      "h_pop": 987654,
+      "w_pop": 1215080,
+      "v_pop": 2202734
+    }
+  ],
+  "insight": {
+    "summary": "성남시의 2025년 9월 2일 유입인구는 총 2,202,734명으로 집계되었습니다."
+  }
+}

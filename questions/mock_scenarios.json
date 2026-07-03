@@ -1,0 +1,16 @@
+[
+  {
+    "id": "daily_inflow_summary",
+    "question": "2025년 9월 2일 성남시 유입인구 요약 (Mock)",
+    "viz_type": "single_value",
+    "expected_shape": "kpi",
+    "data_ref": "questions/mock_data/daily_inflow_summary.json"
+  },
+  {
+    "id": "sex_age_distribution",
+    "question": "2025년 9월 2일 성남시 성별/연령 분포 보여줘 (Mock)",
+    "viz_type": "bar",
+    "expected_shape": "table",
+    "data_ref": "questions/mock_data/sex_age_distribution.json"
+  }
+]

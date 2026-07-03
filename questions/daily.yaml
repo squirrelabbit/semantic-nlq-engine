@@ -1,0 +1,7 @@
+questions:
+  - id: daily_seongnam_inflow_summary
+    text: "20250902 성남시 유입 인구 요약해줘"
+    intent: daily_summary
+    metrics: ["h_pop", "w_pop", "v_pop"]
+    comparison: "previous_day"
+    notes: "성남시 유입 인구 집계 요약"

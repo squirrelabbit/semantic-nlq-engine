@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+/.vite
+
+# testing
+/coverage
+
+# production
+/dist
+
+# misc
+.DS_Store
+.env
+.env.local
+.env.*.local
+.vscode
+*.log
+*.tsbuildinfo
+pnpm-lock.yaml

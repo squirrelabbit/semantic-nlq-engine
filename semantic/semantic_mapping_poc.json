@@ -1,0 +1,250 @@
+{
+  "datasets": [
+    {
+      "table": "place_codes",
+      "name": "지역 및 행정 구역 코드 정보",
+      "description": "행정동/시군구 코드와 명칭을 제공하며, 유효 기간 제약을 포함한다.",
+      "domain": "geography",
+      "tags": [
+        "#지역",
+        "#행정",
+        "#코드"
+      ],
+      "synonyms": [
+        "행정동 코드",
+        "지역 코드",
+        "지역명",
+        "법정동",
+        "시군구"
+      ],
+      "dimensions": {
+        "location": [
+          "code",
+          "admin_code",
+          "name",
+          "sgng_cd"
+        ],
+        "time": [
+          "created_at",
+          "abolished_at"
+        ]
+      },
+      "constraints": [
+        "place_codes.created_at IS NULL OR place_codes.created_at <= '{std_ymd}'",
+        "place_codes.abolished_at IS NULL OR place_codes.abolished_at >= '{std_ymd}'"
+      ],
+      "joins": [],
+      "measures": [],
+      "samples": {
+        "code": "1100000000",
+        "admin_code": "1100000000",
+        "name": "서울특별시 서울특별시",
+        "sgng_cd": "11000",
+        "created_at": "19880423",
+        "abolished_at": "20241231"
+      }
+    },
+    {
+      "table": "sungnam_service_inflow_pop",
+      "name": "성남시 서비스 유입 인구 통계",
+      "description": "성남시 유입 인구(주거/직장/방문) 집계 테이블.",
+      "domain": "population",
+      "tags": [
+        "#인구",
+        "#유입",
+        "#시간",
+        "#지역"
+      ],
+      "synonyms": [
+        "유입 인구",
+        "서비스 인구"
+      ],
+      "dimensions": {
+        "time": [
+          "std_ym",
+          "std_ymd",
+          "time"
+        ],
+        "location": [
+          "inflow_cd",
+          "hcode"
+        ]
+      },
+      "joins": [
+        {
+          "column": "hcode",
+          "ref_table": "place_codes",
+          "ref_column": "admin_code",
+          "ref_name": "name",
+          "description": "행정동 코드(hcode)는 place_codes.admin_code와 매핑. 유입 인구의 도착/체류 지역을 의미한다."
+        },
+        {
+          "column": "inflow_cd",
+          "ref_table": "place_codes",
+          "ref_column": "code",
+          "ref_name": "name",
+          "description": "유입지 코드(inflow_cd)는 place_codes.code와 매핑. 유입 인구의 출발 지역을 의미한다.",
+          "sql_hint": "JOIN place_codes pc ON t1.inflow_cd = LEFT(pc.code, 5)"
+        }
+      ],
+      "constraints": [
+        "place_codes.created_at IS NULL OR place_codes.created_at <= '{std_ymd}'",
+        "place_codes.abolished_at IS NULL OR place_codes.abolished_at >= '{std_ymd}'"
+      ],
+      "measures": [
+        "h_pop",
+        "w_pop",
+        "v_pop"
+      ],
+      "samples": {
+        "std_ym": "202509",
+        "std_ymd": "20250901",
+        "time": "08",
+        "inflow_cd": "2817769000",
+        "hcode": "4113555000",
+        "h_pop": "0.00",
+        "w_pop": "0.00",
+        "v_pop": "2.00"
+      }
+    },
+    {
+      "table": "sungnam_service_sex_age_pop",
+      "name": "성남시 성연령별 서비스 인구",
+      "description": "행정동별 성연령별 서비스 인구 집계 테이블.",
+      "domain": "population",
+      "tags": [
+        "#인구",
+        "#성별",
+        "#연령",
+        "#시간"
+      ],
+      "synonyms": [
+        "성연령 인구",
+        "성별 연령별"
+      ],
+      "dimensions": {
+        "time": [
+          "std_ym",
+          "std_ymd",
+          "time"
+        ],
+        "location": [
+          "hcode"
+        ]
+      },
+      "joins": [
+        {
+          "column": "hcode",
+          "ref_table": "place_codes",
+          "ref_column": "admin_code",
+          "ref_name": "name",
+          "description": "행정동 코드(hcode)는 place_codes.admin_code와 매핑."
+        }
+      ],
+      "constraints": [
+        "place_codes.created_at IS NULL OR place_codes.created_at <= '{std_ymd}'",
+        "place_codes.abolished_at IS NULL OR place_codes.abolished_at >= '{std_ymd}'"
+      ],
+      "measures": [
+        "h_pop",
+        "w_pop",
+        "v_pop"
+      ],
+      "samples": {
+        "std_ym": "202509",
+        "std_ymd": "20250901",
+        "time": "08",
+        "sex_age": "M_3034",
+        "hcode": "4113555000",
+        "h_pop": "12.00",
+        "w_pop": "8.00",
+        "v_pop": "4.00"
+      }
+    },
+    {
+      "table": "sungnam_unique_pop",
+      "name": "성남시 시군구단위 유니크 인구",
+      "description": "유입지별 성별/연령 인구 분포를 포함.",
+      "domain": "population",
+      "tags": [
+        "#인구",
+        "#성별",
+        "#연령",
+        "#유입"
+      ],
+      "synonyms": [
+        "유니크 인구",
+        "성별 연령 분포"
+      ],
+      "dimensions": {
+        "time": [
+          "std_ym",
+          "std_ymd"
+        ],
+        "location": [
+          "sgng_cd",
+          "inflow_cd"
+        ]
+      },
+      "joins": [
+        {
+          "column": "sgng_cd",
+          "ref_table": "place_codes",
+          "ref_column": "sgng_cd",
+          "ref_name": "name",
+          "description": "시군구 코드(sgng_cd)는 place_codes.sgng_cd와 매핑."
+        },
+        {
+          "column": "inflow_cd",
+          "ref_table": "place_codes",
+          "ref_column": "code",
+          "ref_name": "name",
+          "description": "유입지 코드(inflow_cd)는 place_codes.code와 매핑.",
+          "sql_hint": "JOIN place_codes pc ON t1.inflow_cd = LEFT(pc.code, 5)"
+        }
+      ],
+      "constraints": [
+        "place_codes.created_at IS NULL OR place_codes.created_at <= '{std_ymd}'",
+        "place_codes.abolished_at IS NULL OR place_codes.abolished_at >= '{std_ymd}'"
+      ],
+      "measures": [
+        "m_0009",
+        "m_1014",
+        "m_1519",
+        "m_2024",
+        "m_2529",
+        "m_3034",
+        "m_3539",
+        "m_4044",
+        "m_4549",
+        "m_5054",
+        "m_5559",
+        "m_6064",
+        "m_6569",
+        "m_70u",
+        "w_0009",
+        "w_1014",
+        "w_1519",
+        "w_2024",
+        "w_2529",
+        "w_3034",
+        "w_3539",
+        "w_4044",
+        "w_4549",
+        "w_5054",
+        "w_5559",
+        "w_6064",
+        "w_6569",
+        "w_70u"
+      ],
+      "samples": {
+        "std_ym": "202509",
+        "std_ymd": "20250901",
+        "sgng_cd": "41130",
+        "inflow_cd": "11110",
+        "m_0009": "0.00",
+        "w_70u": "38.63"
+      }
+    }
+  ]
+}

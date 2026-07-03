@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "required": ["intent", "dataset", "metrics", "filters"],
+  "additionalProperties": false,
+  "properties": {
+    "original_question": {
+      "type": "string",
+      "description": "The original user question, unchanged"
+    },
+    "intent": {
+      "type": "string",
+      "description": "SEARCH, TREND, COMPARISON, RANKING"
+    },
+    "dataset": {
+      "type": "string",
+      "description": "Target table name"
+    },
+    "metrics": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "filters": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "group_by": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Columns to group by for breakdowns or trends"
+    },
+    "time_range": {
+      "type": "object",
+      "required": ["start", "end"],
+      "properties": {
+        "start": { "type": "string", "description": "YYYYMMDD" },
+        "end": { "type": "string", "description": "YYYYMMDD" }
+      },
+      "additionalProperties": false
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

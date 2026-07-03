@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "required": ["sql"],
+  "properties": {
+    "sql": {
+      "type": "string",
+      "description": "Read-only SELECT SQL using available tables/columns"
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

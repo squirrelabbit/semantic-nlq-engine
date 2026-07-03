@@ -1,0 +1,19 @@
+questions:
+  - id: cause_check
+    text: "최근 변화는 단기 이벤트인가, 추세 변화인가?"
+    intent: deep_cause_check
+    metrics: ["h_pop", "w_pop", "v_pop"]
+    comparison: "recent_4_weeks_vs_last_year"
+    notes: "선택 지역 기준으로 최근 4주 평균과 전년 동기 비교"
+  - id: long_term_compare
+    text: "최근 3년 동일 기간과 비교해줘"
+    intent: deep_long_term
+    metrics: ["h_pop", "w_pop", "v_pop"]
+    comparison: "year_over_year_3y"
+    notes: "선택 지역 기준 연도별 평균 비교"
+  - id: neighbor_flow
+    text: "인접 지역과의 이동 패턴 비교해줘"
+    intent: deep_neighbor_flow
+    metrics: ["h_pop", "w_pop", "v_pop"]
+    comparison: "neighbor_regions"
+    notes: "선택 지역과 인접 지역 유입 비교"

@@ -1,0 +1,492 @@
+{
+  "datasets": [
+    {
+      "table": "place_codes",
+      "description": "지역 및 행정 구역 코드 정보",
+      "columns": [
+        {
+          "name": "code",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#코드"
+          ],
+          "sample_value": "1100000000"
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#명칭"
+          ],
+          "sample_value": "서울특별시 서울특별시"
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "role": "dimension",
+          "tags": [
+            "#기타"
+          ],
+          "sample_value": "존재"
+        },
+        {
+          "name": "sgng_cd",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#시군구코드"
+          ],
+          "sample_value": "11000"
+        },
+        {
+          "name": "is_sgng",
+          "type": "boolean",
+          "role": "dimension",
+          "tags": [
+            "#기타"
+          ],
+          "sample_value": "true"
+        },
+        {
+          "name": "admin_code",
+          "type": "text",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#행정코드"
+          ],
+          "sample_value": "1100000000"
+        },
+        {
+          "name": "sido_name",
+          "type": "text",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#시도"
+          ],
+          "sample_value": "서울특별시"
+        },
+        {
+          "name": "sigungu_name",
+          "type": "text",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#시군구"
+          ],
+          "sample_value": "성남시 분당구"
+        },
+        {
+          "name": "eupmyeondong_name",
+          "type": "text",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#읍면동"
+          ],
+          "sample_value": "분당동"
+        },
+        {
+          "name": "dongri_name",
+          "type": "text",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#동리"
+          ],
+          "sample_value": "서울특별시"
+        },
+        {
+          "name": "created_at",
+          "type": "text",
+          "role": "dimension",
+          "tags": [
+            "#시간"
+          ],
+          "sample_value": "19880423"
+        },
+        {
+          "name": "abolished_at",
+          "type": "text",
+          "role": "dimension",
+          "tags": ["#시간", "#삭제여부"],
+          "description": "말소 일자 (YYYYMMDD). 현재 날짜보다 이전이면 유효하지 않은 코드임.",
+          "sample_value": "20241231"       
+        }
+      ]
+    },
+    {
+      "table": "sungnam_service_inflow_pop",
+      "description": "성남시 서비스 유입 인구 통계",
+      "joins": [
+        {
+          "column": "hcode",
+          "ref_table": "place_codes",
+          "ref_column": "admin_code",
+          "ref_name": "name",
+          "description": "인구 데이터의 hcode는 place_codes의 행정동코드(admin_code)와 매핑됨. 조인 시 abolished_at이 현재일자보다 크거나 NULL인 유효한 코드만 사용 권장."
+        },
+        {
+          "column": "inflow_cd",
+          "ref_table": "place_codes",
+          "ref_column": "code",
+          "ref_name": "name",
+          "description": "유입지 코드(inflow_cd)는 place_codes의 법정동코드(code)와 매핑됨."
+        }
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "role": "dimension",
+          "tags": [
+            "#기타"
+          ],
+          "sample_value": "81665"
+        },
+        {
+          "name": "std_ym",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#시간"
+          ],
+          "sample_value": "202509"
+        },
+        {
+          "name": "std_ymd",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#시간"
+          ],
+          "sample_value": "20250901"
+        },
+        {
+          "name": "time",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#시간"
+          ],
+          "sample_value": "08"
+        },
+        {
+          "name": "inflow_cd",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#유입지코드"
+          ],
+          "sample_value": "2817769000"
+        },
+        {
+          "name": "hcode",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#행정동코드"
+          ],
+          "sample_value": "4113555000"
+        },
+        {
+          "name": "h_pop",
+          "type": "numeric",
+          "role": "measure",
+          "tags": [
+            "#인구",
+            "#상주인구"
+          ],
+          "sample_value": "0.00"
+        },
+        {
+          "name": "w_pop",
+          "type": "numeric",
+          "role": "measure",
+          "tags": [
+            "#인구",
+            "#직장인구"
+          ],
+          "sample_value": "0.00"
+        },
+        {
+          "name": "v_pop",
+          "type": "numeric",
+          "role": "measure",
+          "tags": [
+            "#인구",
+            "#방문인구"
+          ],
+          "sample_value": "2.00"
+        }
+      ]
+    },
+    {
+      "table": "sungnam_service_pcell_pop",
+      "description": "성남시 격자단위 서비스 인구 현황",
+      "joins": [
+        {
+          "column": "hcode",
+          "ref_table": "place_codes",
+          "ref_column": "code",
+          "ref_name": "name"
+        }
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "role": "dimension",
+          "tags": [
+            "#기타"
+          ],
+          "sample_value": "1"
+        },
+        {
+          "name": "std_ym",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#시간"
+          ],
+          "sample_value": "202509"
+        },
+        {
+          "name": "std_ymd",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#시간"
+          ],
+          "sample_value": "20250901"
+        },
+        {
+          "name": "hcode",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#행정동코드"
+          ],
+          "sample_value": "4113151000"
+        },
+        {
+          "name": "x_coord",
+          "type": "numeric",
+          "role": "dimension",
+          "tags": [
+            "#좌표"
+          ],
+          "sample_value": "968033.99178700"
+        },
+        {
+          "name": "y_coord",
+          "type": "numeric",
+          "role": "dimension",
+          "tags": [
+            "#좌표"
+          ],
+          "sample_value": "1938129.14738900"
+        },
+        {
+          "name": "time_00",
+          "type": "numeric",
+          "role": "measure",
+          "tags": [
+            "#인구",
+            "#시간"
+          ],
+          "sample_value": "32.22"
+        }
+      ]
+    },
+    {
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "description": "성남시 격자단위 성별 및 연령별 서비스 인구",
+      "joins": [
+        {
+          "column": "hcode",
+          "ref_table": "place_codes",
+          "ref_column": "code",
+          "ref_name": "name"
+        }
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "role": "dimension",
+          "tags": [
+            "#기타"
+          ],
+          "sample_value": "1"
+        },
+        {
+          "name": "std_ym",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#시간"
+          ],
+          "sample_value": "202509"
+        },
+        {
+          "name": "std_ymd",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#시간"
+          ],
+          "sample_value": "20250901"
+        },
+        {
+          "name": "hcode",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#행정동코드"
+          ],
+          "sample_value": "4113151000"
+        },
+        {
+          "name": "m_0009",
+          "type": "numeric",
+          "role": "measure",
+          "tags": [
+            "#인구",
+            "#성별",
+            "#연령"
+          ],
+          "sample_value": "0.38000000"
+        },
+        {
+          "name": "w_0009",
+          "type": "numeric",
+          "role": "measure",
+          "tags": [
+            "#인구",
+            "#성별",
+            "#연령"
+          ],
+          "sample_value": "0.48"
+        },
+        {
+          "name": "x_coord",
+          "type": "numeric",
+          "role": "dimension",
+          "tags": [
+            "#좌표"
+          ],
+          "sample_value": "968033.99178700"
+        },
+        {
+          "name": "y_coord",
+          "type": "numeric",
+          "role": "dimension",
+          "tags": [
+            "#좌표"
+          ],
+          "sample_value": "1938129.14738900"
+        }
+      ]
+    },
+    {
+      "table": "sungnam_unique_pop",
+      "description": "성남시 유입지별 고유 인구 통계",
+      "joins": [
+        {
+          "column": "sgng_cd",
+          "ref_table": "place_codes",
+          "ref_column": "sgng_cd",
+          "ref_name": "name"
+        },
+        {
+          "column": "inflow_cd",
+          "ref_table": "place_codes",
+          "ref_column": "code",
+          "ref_name": "name"
+        }
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "type": "bigint",
+          "role": "dimension",
+          "tags": [
+            "#기타"
+          ],
+          "sample_value": "1"
+        },
+        {
+          "name": "std_ym",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#시간"
+          ],
+          "sample_value": "202509"
+        },
+        {
+          "name": "std_ymd",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#시간"
+          ],
+          "sample_value": "20250917"
+        },
+        {
+          "name": "sgng_cd",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#시군구코드"
+          ],
+          "sample_value": "41130"
+        },
+        {
+          "name": "inflow_cd",
+          "type": "character varying",
+          "role": "dimension",
+          "tags": [
+            "#지역",
+            "#유입지코드"
+          ],
+          "sample_value": "11110"
+        },
+        {
+          "name": "m_0009",
+          "type": "numeric",
+          "role": "measure",
+          "tags": [
+            "#인구",
+            "#성별",
+            "#연령"
+          ],
+          "sample_value": "0.00"
+        },
+        {
+          "name": "w_70u",
+          "type": "numeric",
+          "role": "measure",
+          "tags": [
+            "#인구",
+            "#성별",
+            "#연령"
+          ],
+          "sample_value": "38.63"
+        }
+      ]
+    }
+  ]
+}

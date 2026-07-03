@@ -1,0 +1,14 @@
+{
+  "type": "object",
+  "required": ["intent", "dataset", "metrics", "filters"],
+  "properties": {
+    "original_question": { "type": "string" },
+    "intent": { "type": "string" },
+    "dataset": { "type": "string" },
+    "metrics": { "type": "array", "items": { "type": "string" } },
+    "filters": { "type": "object" },
+    "group_by": { "type": "array", "items": { "type": "string" } },
+    "confidence": { "type": "number" },
+    "notes": { "type": "string" }
+  }
+}

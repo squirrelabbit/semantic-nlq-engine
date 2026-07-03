@@ -1,0 +1,359 @@
+{
+  "datasets": [
+    {
+      "table": "place_codes",
+      "name": "지역 및 행정 구역 코드 정보",
+      "description": "지역 및 행정 구역 코드 정보",
+      "domain": "geography",
+      "tags": [
+        "#지역",
+        "#행정",
+        "#코드"
+      ],
+      "synonyms": [
+        "행정동 코드",
+        "지역 코드",
+        "지역명",
+        "법정동",
+        "시군구"
+      ],
+      "dimensions": {
+        "location": [
+          "code",
+          "name",
+          "sgng_cd",
+          "admin_code",
+          "sido_name",
+          "sigungu_name",
+          "eupmyeondong_name",
+          "dongri_name"
+        ],
+        "time": [
+          "created_at",
+          "abolished_at"
+        ]
+      },
+      "constraints": [
+        "place_codes.created_at IS NULL OR place_codes.created_at <= '{std_ymd}'",
+        "place_codes.abolished_at IS NULL OR place_codes.abolished_at >= '{std_ymd}'"
+      ],
+      "joins": [],
+      "measures": [],
+      "samples": {
+        "code": "1100000000",
+        "name": "서울특별시 서울특별시",
+        "status": "존재",
+        "sgng_cd": "11000",
+        "is_sgng": "true",
+        "admin_code": "1100000000",
+        "sido_name": "서울특별시",
+        "sigungu_name": "성남시 분당구",
+        "eupmyeondong_name": "분당동",
+        "dongri_name": "서울특별시",
+        "created_at": "19880423",
+        "abolished_at": "20241231"
+      }
+    },
+    {
+      "table": "sungnam_service_inflow_pop",
+      "name": "성남시 서비스 유입 인구 통계",
+      "description": "성남시 서비스 유입 인구 통계",
+      "domain": "population",
+      "tags": [
+        "#인구",
+        "#유입",
+        "#시간",
+        "#지역"
+      ],
+      "synonyms": [
+        "유입 인구",
+        "유입",
+        "서비스 인구"
+      ],
+      "dimensions": {
+        "time": [
+          "std_ym",
+          "std_ymd",
+          "time"
+        ],
+        "location": [
+          "inflow_cd",
+          "hcode"
+        ]
+      },
+      "joins": [
+        {
+          "column": "hcode",
+          "ref_table": "place_codes",
+          "ref_column": "admin_code",
+          "ref_name": "name",
+          "description": "인구 데이터의 hcode는 place_codes의 행정동코드(admin_code)와 매핑됨. 조인 시 abolished_at이 현재일자보다 크거나 NULL인 유효한 코드만 사용 권장."
+        },
+        {
+          "column": "inflow_cd",
+          "ref_table": "place_codes",
+          "ref_column": "code",
+          "ref_name": "name",
+          "description": "유입지 코드(inflow_cd)는 place_codes의 법정동코드(code)와 매핑됨.",
+          "sql_hint": "JOIN place_codes pc ON t1.inflow_cd = LEFT(pc.code, 5)"
+        }
+      ],
+      "measures": [
+        "h_pop",
+        "w_pop",
+        "v_pop"
+      ],
+      "samples": {
+        "id": "81665",
+        "std_ym": "202509",
+        "std_ymd": "20250901",
+        "time": "08",
+        "inflow_cd": "2817769000",
+        "hcode": "4113555000",
+        "h_pop": "0.00",
+        "w_pop": "0.00",
+        "v_pop": "2.00"
+      }
+    },
+    {
+      "table": "sungnam_service_pcell_pop",
+      "name": "성남시 격자단위 서비스 인구 현황",
+      "description": "성남시 격자단위 서비스 인구 현황",
+      "domain": "population",
+      "tags": [
+        "#인구",
+        "#격자",
+        "#시간",
+        "#좌표"
+      ],
+      "synonyms": [
+        "셀 단위 시간대",
+        "시간대별 셀"
+      ],
+      "dimensions": {
+        "time": [
+          "std_ym",
+          "std_ymd"
+        ],
+        "location": [
+          "hcode",
+          "x_coord",
+          "y_coord"
+        ]
+      },
+      "joins": [
+        {
+          "column": "hcode",
+          "ref_table": "place_codes",
+          "ref_column": "code",
+          "ref_name": "name"
+        }
+      ],
+      "measures": [
+        "time_00"
+      ],
+      "samples": {
+        "id": "1",
+        "std_ym": "202509",
+        "std_ymd": "20250901",
+        "hcode": "4113151000",
+        "x_coord": "968033.99178700",
+        "y_coord": "1938129.14738900",
+        "time_00": "32.22"
+      }
+    },
+    {
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "name": "sungnam_service_pcell_sex_age_pop",
+      "description": "성남시 격자단위 성별 및 연령별 서비스 인구",
+      "domain": "population",
+      "tags": [
+        "#인구",
+        "#성별",
+        "#연령",
+        "#격자",
+        "#좌표"
+      ],
+      "synonyms": [
+        "셀 단위 성연령",
+        "성연령 셀"
+      ],
+      "dimensions": {
+        "time": [
+          "std_ym",
+          "std_ymd"
+        ],
+        "location": [
+          "hcode",
+          "x_coord",
+          "y_coord"
+        ]
+      },
+      "joins": [
+        {
+          "column": "hcode",
+          "ref_table": "place_codes",
+          "ref_column": "code",
+          "ref_name": "name"
+        }
+      ],
+      "measures": [
+        "m_0009",
+        "w_0009"
+      ],
+      "samples": {
+        "id": "1",
+        "std_ym": "202509",
+        "std_ymd": "20250901",
+        "hcode": "4113151000",
+        "m_0009": "0.38000000",
+        "w_0009": "0.48",
+        "x_coord": "968033.99178700",
+        "y_coord": "1938129.14738900"
+      }
+    },
+    {
+      "table": "sungnam_service_sex_age_pop",
+      "name": "성남시 행정동 성연령별 서비스 인구",
+      "description": "성남시 행정동 단위 성별 및 연령별 서비스 인구",
+      "domain": "population",
+      "tags": [
+        "#인구",
+        "#성별",
+        "#연령",
+        "#시간",
+        "#지역"
+      ],
+      "synonyms": [
+        "성별",
+        "연령",
+        "성연령",
+        "성별 연령",
+        "성연령 인구"
+      ],
+      "dimensions": {
+        "time": [
+          "std_ym",
+          "std_ymd",
+          "time"
+        ],
+        "location": [
+          "hcode"
+        ],
+        "demographic": [
+          "sex_age"
+        ]
+      },
+      "joins": [
+        {
+          "column": "hcode",
+          "ref_table": "place_codes",
+          "ref_column": "admin_code",
+          "ref_name": "name"
+        }
+      ],
+      "measures": [
+        "h_pop",
+        "w_pop",
+        "v_pop"
+      ],
+      "samples": {
+        "id": "1",
+        "std_ym": "202509",
+        "std_ymd": "20250902",
+        "time": "18",
+        "sex_age": "W_2024",
+        "hcode": "4113555000"
+      }
+    },
+    {
+      "table": "sungnam_unique_pop",
+      "name": "성남시 유입지별 고유 인구 통계",
+      "description": "성남시 유입지별 고유 인구 통계",
+      "domain": "population",
+      "tags": [
+        "#인구",
+        "#유입",
+        "#성별",
+        "#연령",
+        "#지역"
+      ],
+      "synonyms": [
+        "유니크 인구",
+        "중복 제외 인구"
+      ],
+      "dimensions": {
+        "time": [
+          "std_ym",
+          "std_ymd"
+        ],
+        "location": [
+          "sgng_cd",
+          "inflow_cd"
+        ]
+      },
+      "joins": [
+        {
+          "column": "sgng_cd",
+          "ref_table": "place_codes",
+          "ref_column": "sgng_cd",
+          "ref_name": "name"
+        },
+        {
+          "column": "inflow_cd",
+          "ref_table": "place_codes",
+          "ref_column": "code",
+          "ref_name": "name",
+          "description": "inflow_cd(5자리)는 place_codes.code의 앞 5자리와 매핑됨. 조인 시 LEFT(code, 5)를 사용할 것."       
+        }
+      ],
+      "measures": [
+        "m_0009",
+        "w_70u"
+      ],
+      "samples": {
+        "id": "1",
+        "std_ym": "202509",
+        "std_ymd": "20250917",
+        "sgng_cd": "41130",
+        "inflow_cd": "11110",
+        "m_0009": "0.00",
+        "w_70u": "38.63"
+      }
+    }
+  ],
+  "metrics": [
+    {
+      "name": "주거인구",
+      "columns": [
+        "h_pop"
+      ]
+    },
+    {
+      "name": "직장인구",
+      "columns": [
+        "w_pop"
+      ]
+    },
+    {
+      "name": "방문인구",
+      "columns": [
+        "v_pop"
+      ]
+    },
+    {
+      "name": "유입 인구",
+      "columns": [
+        "h_pop",
+        "w_pop",
+        "v_pop"
+      ]
+    },
+    {
+      "name": "성별/연령별",
+      "columns": [
+        "sex_age"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1546 @@
+{
+  "@context": {
+    "pop": "http://example.org/ontology/population#",
+    "schema": "http://schema.org/",
+    "Dataset": "schema:Dataset",
+    "Property": "schema:Property",
+    "name": "schema:name",
+    "description": "schema:description",
+    "table": "pop:table",
+    "column": "pop:column",
+    "semanticTag": "pop:semanticTag",
+    "dataType": "pop:dataType",
+    "tags": "pop:tags",
+    "hasProperty": {
+      "@id": "pop:hasProperty",
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "pop:sungnam_service_inflow_pop:id",
+      "@type": "Property",
+      "name": "id",
+      "description": "id",
+      "table": "sungnam_service_inflow_pop",
+      "column": "id",
+      "dataType": "BIGINT",
+      "tags": []
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop:std_ym",
+      "@type": "Property",
+      "name": "std_ym",
+      "description": "기준년월",
+      "table": "sungnam_service_inflow_pop",
+      "column": "std_ym",
+      "dataType": "VARCHAR(6)",
+      "tags": [
+        "time"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop:std_ymd",
+      "@type": "Property",
+      "name": "std_ymd",
+      "description": "기준년월일",
+      "table": "sungnam_service_inflow_pop",
+      "column": "std_ymd",
+      "dataType": "VARCHAR(8)",
+      "tags": [
+        "time"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop:time",
+      "@type": "Property",
+      "name": "time",
+      "description": "시간",
+      "table": "sungnam_service_inflow_pop",
+      "column": "time",
+      "dataType": "VARCHAR(2)",
+      "tags": [
+        "time"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop:inflow_cd",
+      "@type": "Property",
+      "name": "inflow_cd",
+      "description": "유입지역 코드",
+      "table": "sungnam_service_inflow_pop",
+      "column": "inflow_cd",
+      "dataType": "VARCHAR(10)",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop:hcode",
+      "@type": "Property",
+      "name": "hcode",
+      "description": "행정동 코드",
+      "table": "sungnam_service_inflow_pop",
+      "column": "hcode",
+      "dataType": "VARCHAR(10)",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop:h_pop",
+      "@type": "Property",
+      "name": "h_pop",
+      "description": "주거인구(야간체류지)",
+      "table": "sungnam_service_inflow_pop",
+      "column": "h_pop",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop:w_pop",
+      "@type": "Property",
+      "name": "w_pop",
+      "description": "직장인구(주간체류지)",
+      "table": "sungnam_service_inflow_pop",
+      "column": "w_pop",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop:v_pop",
+      "@type": "Property",
+      "name": "v_pop",
+      "description": "방문인구",
+      "table": "sungnam_service_inflow_pop",
+      "column": "v_pop",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop",
+      "@type": "Dataset",
+      "name": "행정동별 유입지별 서비스인구",
+      "table": "sungnam_service_inflow_pop",
+      "hasProperty": [
+        "pop:sungnam_service_inflow_pop:id",
+        "pop:sungnam_service_inflow_pop:std_ym",
+        "pop:sungnam_service_inflow_pop:std_ymd",
+        "pop:sungnam_service_inflow_pop:time",
+        "pop:sungnam_service_inflow_pop:inflow_cd",
+        "pop:sungnam_service_inflow_pop:hcode",
+        "pop:sungnam_service_inflow_pop:h_pop",
+        "pop:sungnam_service_inflow_pop:w_pop",
+        "pop:sungnam_service_inflow_pop:v_pop"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:id",
+      "@type": "Property",
+      "name": "id",
+      "description": "id",
+      "table": "sungnam_service_pcell_pop",
+      "column": "id",
+      "dataType": "BIGINT",
+      "tags": []
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:std_ym",
+      "@type": "Property",
+      "name": "std_ym",
+      "description": "기준년월",
+      "table": "sungnam_service_pcell_pop",
+      "column": "std_ym",
+      "dataType": "VARCHAR(6)",
+      "tags": [
+        "time"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:std_ymd",
+      "@type": "Property",
+      "name": "std_ymd",
+      "description": "기준년월일",
+      "table": "sungnam_service_pcell_pop",
+      "column": "std_ymd",
+      "dataType": "VARCHAR(8)",
+      "tags": [
+        "time"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:hcode",
+      "@type": "Property",
+      "name": "hcode",
+      "description": "행정동 코드",
+      "table": "sungnam_service_pcell_pop",
+      "column": "hcode",
+      "dataType": "VARCHAR(10)",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_00",
+      "@type": "Property",
+      "name": "time_00",
+      "description": "00시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_00",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_01",
+      "@type": "Property",
+      "name": "time_01",
+      "description": "01시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_01",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_02",
+      "@type": "Property",
+      "name": "time_02",
+      "description": "02시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_02",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_03",
+      "@type": "Property",
+      "name": "time_03",
+      "description": "03시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_03",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_04",
+      "@type": "Property",
+      "name": "time_04",
+      "description": "04시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_04",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_05",
+      "@type": "Property",
+      "name": "time_05",
+      "description": "05시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_05",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_06",
+      "@type": "Property",
+      "name": "time_06",
+      "description": "06시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_06",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_07",
+      "@type": "Property",
+      "name": "time_07",
+      "description": "07시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_07",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_08",
+      "@type": "Property",
+      "name": "time_08",
+      "description": "08시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_08",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_09",
+      "@type": "Property",
+      "name": "time_09",
+      "description": "09시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_09",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_10",
+      "@type": "Property",
+      "name": "time_10",
+      "description": "10시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_10",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_11",
+      "@type": "Property",
+      "name": "time_11",
+      "description": "11시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_11",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_12",
+      "@type": "Property",
+      "name": "time_12",
+      "description": "12시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_12",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_13",
+      "@type": "Property",
+      "name": "time_13",
+      "description": "13시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_13",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_14",
+      "@type": "Property",
+      "name": "time_14",
+      "description": "14시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_14",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_15",
+      "@type": "Property",
+      "name": "time_15",
+      "description": "15시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_15",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_16",
+      "@type": "Property",
+      "name": "time_16",
+      "description": "16시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_16",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_17",
+      "@type": "Property",
+      "name": "time_17",
+      "description": "17시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_17",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_18",
+      "@type": "Property",
+      "name": "time_18",
+      "description": "18시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_18",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_19",
+      "@type": "Property",
+      "name": "time_19",
+      "description": "19시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_19",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_20",
+      "@type": "Property",
+      "name": "time_20",
+      "description": "20시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_20",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_21",
+      "@type": "Property",
+      "name": "time_21",
+      "description": "21시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_21",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_22",
+      "@type": "Property",
+      "name": "time_22",
+      "description": "22시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_22",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_23",
+      "@type": "Property",
+      "name": "time_23",
+      "description": "23시 인구",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_23",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:x_coord",
+      "@type": "Property",
+      "name": "x_coord",
+      "description": "X좌표",
+      "table": "sungnam_service_pcell_pop",
+      "column": "x_coord",
+      "dataType": "NUMERIC(38,8)",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:y_coord",
+      "@type": "Property",
+      "name": "y_coord",
+      "description": "Y좌표",
+      "table": "sungnam_service_pcell_pop",
+      "column": "y_coord",
+      "dataType": "NUMERIC(38,8)",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop",
+      "@type": "Dataset",
+      "name": "CELL단위 시간대별 서비스인구",
+      "table": "sungnam_service_pcell_pop",
+      "hasProperty": [
+        "pop:sungnam_service_pcell_pop:id",
+        "pop:sungnam_service_pcell_pop:std_ym",
+        "pop:sungnam_service_pcell_pop:std_ymd",
+        "pop:sungnam_service_pcell_pop:hcode",
+        "pop:sungnam_service_pcell_pop:time_00",
+        "pop:sungnam_service_pcell_pop:time_01",
+        "pop:sungnam_service_pcell_pop:time_02",
+        "pop:sungnam_service_pcell_pop:time_03",
+        "pop:sungnam_service_pcell_pop:time_04",
+        "pop:sungnam_service_pcell_pop:time_05",
+        "pop:sungnam_service_pcell_pop:time_06",
+        "pop:sungnam_service_pcell_pop:time_07",
+        "pop:sungnam_service_pcell_pop:time_08",
+        "pop:sungnam_service_pcell_pop:time_09",
+        "pop:sungnam_service_pcell_pop:time_10",
+        "pop:sungnam_service_pcell_pop:time_11",
+        "pop:sungnam_service_pcell_pop:time_12",
+        "pop:sungnam_service_pcell_pop:time_13",
+        "pop:sungnam_service_pcell_pop:time_14",
+        "pop:sungnam_service_pcell_pop:time_15",
+        "pop:sungnam_service_pcell_pop:time_16",
+        "pop:sungnam_service_pcell_pop:time_17",
+        "pop:sungnam_service_pcell_pop:time_18",
+        "pop:sungnam_service_pcell_pop:time_19",
+        "pop:sungnam_service_pcell_pop:time_20",
+        "pop:sungnam_service_pcell_pop:time_21",
+        "pop:sungnam_service_pcell_pop:time_22",
+        "pop:sungnam_service_pcell_pop:time_23",
+        "pop:sungnam_service_pcell_pop:x_coord",
+        "pop:sungnam_service_pcell_pop:y_coord"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:id",
+      "@type": "Property",
+      "name": "id",
+      "description": "id",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "id",
+      "dataType": "BIGINT",
+      "tags": []
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:std_ym",
+      "@type": "Property",
+      "name": "std_ym",
+      "description": "기준년월",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "std_ym",
+      "dataType": "VARCHAR(6)",
+      "tags": [
+        "time"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:std_ymd",
+      "@type": "Property",
+      "name": "std_ymd",
+      "description": "기준년월일",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "std_ymd",
+      "dataType": "VARCHAR(8)",
+      "tags": [
+        "time"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:hcode",
+      "@type": "Property",
+      "name": "hcode",
+      "description": "행정동 코드",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "hcode",
+      "dataType": "VARCHAR(10)",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_0009",
+      "@type": "Property",
+      "name": "m_0009",
+      "description": "남자00세~09세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_0009",
+      "dataType": "NUMERIC(38,8)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_1014",
+      "@type": "Property",
+      "name": "m_1014",
+      "description": "남자10세~14세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_1014",
+      "dataType": "NUMERIC(38,8)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_1519",
+      "@type": "Property",
+      "name": "m_1519",
+      "description": "남자15세~19세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_1519",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_2024",
+      "@type": "Property",
+      "name": "m_2024",
+      "description": "남자20세~24세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_2024",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_2529",
+      "@type": "Property",
+      "name": "m_2529",
+      "description": "남자25세~29세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_2529",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_3034",
+      "@type": "Property",
+      "name": "m_3034",
+      "description": "남자30세~34세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_3034",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_3539",
+      "@type": "Property",
+      "name": "m_3539",
+      "description": "남자35세~39세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_3539",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_4044",
+      "@type": "Property",
+      "name": "m_4044",
+      "description": "남자40세~44세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_4044",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_4549",
+      "@type": "Property",
+      "name": "m_4549",
+      "description": "남자45세~49세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_4549",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_5054",
+      "@type": "Property",
+      "name": "m_5054",
+      "description": "남자50세~54세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_5054",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_5559",
+      "@type": "Property",
+      "name": "m_5559",
+      "description": "남자55세~59세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_5559",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_6064",
+      "@type": "Property",
+      "name": "m_6064",
+      "description": "남자60세~64세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_6064",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_6569",
+      "@type": "Property",
+      "name": "m_6569",
+      "description": "남자65세~69세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_6569",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_7000",
+      "@type": "Property",
+      "name": "m_7000",
+      "description": "남자70세~00세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_7000",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_0009",
+      "@type": "Property",
+      "name": "w_0009",
+      "description": "여자00세~09세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_0009",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_1014",
+      "@type": "Property",
+      "name": "w_1014",
+      "description": "여자10세~14세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_1014",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_1519",
+      "@type": "Property",
+      "name": "w_1519",
+      "description": "여자15세~19세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_1519",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_2024",
+      "@type": "Property",
+      "name": "w_2024",
+      "description": "여자20세~24세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_2024",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_2529",
+      "@type": "Property",
+      "name": "w_2529",
+      "description": "여자25세~29세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_2529",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_3034",
+      "@type": "Property",
+      "name": "w_3034",
+      "description": "여자30세~34세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_3034",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_3539",
+      "@type": "Property",
+      "name": "w_3539",
+      "description": "여자35세~39세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_3539",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_4044",
+      "@type": "Property",
+      "name": "w_4044",
+      "description": "여자40세~44세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_4044",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_4549",
+      "@type": "Property",
+      "name": "w_4549",
+      "description": "여자45세~49세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_4549",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_5054",
+      "@type": "Property",
+      "name": "w_5054",
+      "description": "여자50세~54세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_5054",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_5559",
+      "@type": "Property",
+      "name": "w_5559",
+      "description": "여자55세~59세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_5559",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_6064",
+      "@type": "Property",
+      "name": "w_6064",
+      "description": "여자60세~64세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_6064",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_6569",
+      "@type": "Property",
+      "name": "w_6569",
+      "description": "여자65세~69세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_6569",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_7000",
+      "@type": "Property",
+      "name": "w_7000",
+      "description": "여자70세~00세",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_7000",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:x_coord",
+      "@type": "Property",
+      "name": "x_coord",
+      "description": "X좌표",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "x_coord",
+      "dataType": "NUMERIC(38,8)",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:y_coord",
+      "@type": "Property",
+      "name": "y_coord",
+      "description": "Y좌표",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "y_coord",
+      "dataType": "NUMERIC(38,8)",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop",
+      "@type": "Dataset",
+      "name": "CELL단위 성연령별 서비스인구",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "hasProperty": [
+        "pop:sungnam_service_pcell_sex_age_pop:id",
+        "pop:sungnam_service_pcell_sex_age_pop:std_ym",
+        "pop:sungnam_service_pcell_sex_age_pop:std_ymd",
+        "pop:sungnam_service_pcell_sex_age_pop:hcode",
+        "pop:sungnam_service_pcell_sex_age_pop:m_0009",
+        "pop:sungnam_service_pcell_sex_age_pop:m_1014",
+        "pop:sungnam_service_pcell_sex_age_pop:m_1519",
+        "pop:sungnam_service_pcell_sex_age_pop:m_2024",
+        "pop:sungnam_service_pcell_sex_age_pop:m_2529",
+        "pop:sungnam_service_pcell_sex_age_pop:m_3034",
+        "pop:sungnam_service_pcell_sex_age_pop:m_3539",
+        "pop:sungnam_service_pcell_sex_age_pop:m_4044",
+        "pop:sungnam_service_pcell_sex_age_pop:m_4549",
+        "pop:sungnam_service_pcell_sex_age_pop:m_5054",
+        "pop:sungnam_service_pcell_sex_age_pop:m_5559",
+        "pop:sungnam_service_pcell_sex_age_pop:m_6064",
+        "pop:sungnam_service_pcell_sex_age_pop:m_6569",
+        "pop:sungnam_service_pcell_sex_age_pop:m_7000",
+        "pop:sungnam_service_pcell_sex_age_pop:w_0009",
+        "pop:sungnam_service_pcell_sex_age_pop:w_1014",
+        "pop:sungnam_service_pcell_sex_age_pop:w_1519",
+        "pop:sungnam_service_pcell_sex_age_pop:w_2024",
+        "pop:sungnam_service_pcell_sex_age_pop:w_2529",
+        "pop:sungnam_service_pcell_sex_age_pop:w_3034",
+        "pop:sungnam_service_pcell_sex_age_pop:w_3539",
+        "pop:sungnam_service_pcell_sex_age_pop:w_4044",
+        "pop:sungnam_service_pcell_sex_age_pop:w_4549",
+        "pop:sungnam_service_pcell_sex_age_pop:w_5054",
+        "pop:sungnam_service_pcell_sex_age_pop:w_5559",
+        "pop:sungnam_service_pcell_sex_age_pop:w_6064",
+        "pop:sungnam_service_pcell_sex_age_pop:w_6569",
+        "pop:sungnam_service_pcell_sex_age_pop:w_7000",
+        "pop:sungnam_service_pcell_sex_age_pop:x_coord",
+        "pop:sungnam_service_pcell_sex_age_pop:y_coord"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop:id",
+      "@type": "Property",
+      "name": "id",
+      "description": "id",
+      "table": "sungnam_service_sex_age_pop",
+      "column": "id",
+      "dataType": "BIGINT",
+      "tags": []
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop:std_ym",
+      "@type": "Property",
+      "name": "std_ym",
+      "description": "기준년월",
+      "table": "sungnam_service_sex_age_pop",
+      "column": "std_ym",
+      "dataType": "VARCHAR(6)",
+      "tags": [
+        "time"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop:std_ymd",
+      "@type": "Property",
+      "name": "std_ymd",
+      "description": "기준년월일",
+      "table": "sungnam_service_sex_age_pop",
+      "column": "std_ymd",
+      "dataType": "VARCHAR(8)",
+      "tags": [
+        "time"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop:time",
+      "@type": "Property",
+      "name": "time",
+      "description": "시간",
+      "table": "sungnam_service_sex_age_pop",
+      "column": "time",
+      "dataType": "VARCHAR(2)",
+      "tags": [
+        "time"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop:sex_age",
+      "@type": "Property",
+      "name": "sex_age",
+      "description": "성연령",
+      "table": "sungnam_service_sex_age_pop",
+      "column": "sex_age",
+      "dataType": "VARCHAR(10)",
+      "tags": [
+        "dimension"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop:hcode",
+      "@type": "Property",
+      "name": "hcode",
+      "description": "행정동 코드",
+      "table": "sungnam_service_sex_age_pop",
+      "column": "hcode",
+      "dataType": "VARCHAR(10)",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop:h_pop",
+      "@type": "Property",
+      "name": "h_pop",
+      "description": "주거인구(야간체류지)",
+      "table": "sungnam_service_sex_age_pop",
+      "column": "h_pop",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop:w_pop",
+      "@type": "Property",
+      "name": "w_pop",
+      "description": "직장인구(주간체류지)",
+      "table": "sungnam_service_sex_age_pop",
+      "column": "w_pop",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop:v_pop",
+      "@type": "Property",
+      "name": "v_pop",
+      "description": "방문인구",
+      "table": "sungnam_service_sex_age_pop",
+      "column": "v_pop",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop",
+      "@type": "Dataset",
+      "name": "행정동별 성연령별 서비스인구",
+      "table": "sungnam_service_sex_age_pop",
+      "hasProperty": [
+        "pop:sungnam_service_sex_age_pop:id",
+        "pop:sungnam_service_sex_age_pop:std_ym",
+        "pop:sungnam_service_sex_age_pop:std_ymd",
+        "pop:sungnam_service_sex_age_pop:time",
+        "pop:sungnam_service_sex_age_pop:sex_age",
+        "pop:sungnam_service_sex_age_pop:hcode",
+        "pop:sungnam_service_sex_age_pop:h_pop",
+        "pop:sungnam_service_sex_age_pop:w_pop",
+        "pop:sungnam_service_sex_age_pop:v_pop"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:id",
+      "@type": "Property",
+      "name": "id",
+      "description": "id",
+      "table": "sungnam_unique_pop",
+      "column": "id",
+      "dataType": "BIGINT",
+      "tags": []
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:std_ym",
+      "@type": "Property",
+      "name": "std_ym",
+      "description": "기준년월",
+      "table": "sungnam_unique_pop",
+      "column": "std_ym",
+      "dataType": "VARCHAR(6)",
+      "tags": [
+        "time"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:std_ymd",
+      "@type": "Property",
+      "name": "std_ymd",
+      "description": "기준년월일",
+      "table": "sungnam_unique_pop",
+      "column": "std_ymd",
+      "dataType": "VARCHAR(8)",
+      "tags": [
+        "time"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:sgng_cd",
+      "@type": "Property",
+      "name": "sgng_cd",
+      "description": "시군구 코드",
+      "table": "sungnam_unique_pop",
+      "column": "sgng_cd",
+      "dataType": "VARCHAR(5)",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:inflow_cd",
+      "@type": "Property",
+      "name": "inflow_cd",
+      "description": "유입지역 코드",
+      "table": "sungnam_unique_pop",
+      "column": "inflow_cd",
+      "dataType": "VARCHAR(5)",
+      "tags": [
+        "location"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_0009",
+      "@type": "Property",
+      "name": "m_0009",
+      "description": "남자00세~09세",
+      "table": "sungnam_unique_pop",
+      "column": "m_0009",
+      "dataType": "NUMERIC(38,8)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_1014",
+      "@type": "Property",
+      "name": "m_1014",
+      "description": "남자10세~14세",
+      "table": "sungnam_unique_pop",
+      "column": "m_1014",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_1519",
+      "@type": "Property",
+      "name": "m_1519",
+      "description": "남자15세~19세",
+      "table": "sungnam_unique_pop",
+      "column": "m_1519",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_2024",
+      "@type": "Property",
+      "name": "m_2024",
+      "description": "남자20세~24세",
+      "table": "sungnam_unique_pop",
+      "column": "m_2024",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_2529",
+      "@type": "Property",
+      "name": "m_2529",
+      "description": "남자25세~29세",
+      "table": "sungnam_unique_pop",
+      "column": "m_2529",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_3034",
+      "@type": "Property",
+      "name": "m_3034",
+      "description": "남자30세~34세",
+      "table": "sungnam_unique_pop",
+      "column": "m_3034",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_3539",
+      "@type": "Property",
+      "name": "m_3539",
+      "description": "남자35세~39세",
+      "table": "sungnam_unique_pop",
+      "column": "m_3539",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_4044",
+      "@type": "Property",
+      "name": "m_4044",
+      "description": "남자40세~44세",
+      "table": "sungnam_unique_pop",
+      "column": "m_4044",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_4549",
+      "@type": "Property",
+      "name": "m_4549",
+      "description": "남자45세~49세",
+      "table": "sungnam_unique_pop",
+      "column": "m_4549",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_5054",
+      "@type": "Property",
+      "name": "m_5054",
+      "description": "남자50세~54세",
+      "table": "sungnam_unique_pop",
+      "column": "m_5054",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_5559",
+      "@type": "Property",
+      "name": "m_5559",
+      "description": "남자55세~59세",
+      "table": "sungnam_unique_pop",
+      "column": "m_5559",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_6064",
+      "@type": "Property",
+      "name": "m_6064",
+      "description": "남자60세~64세",
+      "table": "sungnam_unique_pop",
+      "column": "m_6064",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_6569",
+      "@type": "Property",
+      "name": "m_6569",
+      "description": "남자65세~69세",
+      "table": "sungnam_unique_pop",
+      "column": "m_6569",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_70u",
+      "@type": "Property",
+      "name": "m_70u",
+      "description": "남자70세이상",
+      "table": "sungnam_unique_pop",
+      "column": "m_70u",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_0009",
+      "@type": "Property",
+      "name": "w_0009",
+      "description": "여자00세~09세",
+      "table": "sungnam_unique_pop",
+      "column": "w_0009",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_1014",
+      "@type": "Property",
+      "name": "w_1014",
+      "description": "여자10세~14세",
+      "table": "sungnam_unique_pop",
+      "column": "w_1014",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_1519",
+      "@type": "Property",
+      "name": "w_1519",
+      "description": "여자15세~19세",
+      "table": "sungnam_unique_pop",
+      "column": "w_1519",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_2024",
+      "@type": "Property",
+      "name": "w_2024",
+      "description": "여자20세~24세",
+      "table": "sungnam_unique_pop",
+      "column": "w_2024",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_2529",
+      "@type": "Property",
+      "name": "w_2529",
+      "description": "여자25세~29세",
+      "table": "sungnam_unique_pop",
+      "column": "w_2529",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_3034",
+      "@type": "Property",
+      "name": "w_3034",
+      "description": "여자30세~34세",
+      "table": "sungnam_unique_pop",
+      "column": "w_3034",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_3539",
+      "@type": "Property",
+      "name": "w_3539",
+      "description": "여자35세~39세",
+      "table": "sungnam_unique_pop",
+      "column": "w_3539",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_4044",
+      "@type": "Property",
+      "name": "w_4044",
+      "description": "여자40세~44세",
+      "table": "sungnam_unique_pop",
+      "column": "w_4044",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_4549",
+      "@type": "Property",
+      "name": "w_4549",
+      "description": "여자45세~49세",
+      "table": "sungnam_unique_pop",
+      "column": "w_4549",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_5054",
+      "@type": "Property",
+      "name": "w_5054",
+      "description": "여자50세~54세",
+      "table": "sungnam_unique_pop",
+      "column": "w_5054",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_5559",
+      "@type": "Property",
+      "name": "w_5559",
+      "description": "여자55세~59세",
+      "table": "sungnam_unique_pop",
+      "column": "w_5559",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_6064",
+      "@type": "Property",
+      "name": "w_6064",
+      "description": "여자60세~64세",
+      "table": "sungnam_unique_pop",
+      "column": "w_6064",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_6569",
+      "@type": "Property",
+      "name": "w_6569",
+      "description": "여자65세~69세",
+      "table": "sungnam_unique_pop",
+      "column": "w_6569",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_70u",
+      "@type": "Property",
+      "name": "w_70u",
+      "description": "여자70세이상",
+      "table": "sungnam_unique_pop",
+      "column": "w_70u",
+      "dataType": "NUMERIC(18,2)",
+      "tags": [
+        "measure"
+      ]
+    },
+    {
+      "@id": "pop:sungnam_unique_pop",
+      "@type": "Dataset",
+      "name": "시군구단위 유니크인구",
+      "table": "sungnam_unique_pop",
+      "hasProperty": [
+        "pop:sungnam_unique_pop:id",
+        "pop:sungnam_unique_pop:std_ym",
+        "pop:sungnam_unique_pop:std_ymd",
+        "pop:sungnam_unique_pop:sgng_cd",
+        "pop:sungnam_unique_pop:inflow_cd",
+        "pop:sungnam_unique_pop:m_0009",
+        "pop:sungnam_unique_pop:m_1014",
+        "pop:sungnam_unique_pop:m_1519",
+        "pop:sungnam_unique_pop:m_2024",
+        "pop:sungnam_unique_pop:m_2529",
+        "pop:sungnam_unique_pop:m_3034",
+        "pop:sungnam_unique_pop:m_3539",
+        "pop:sungnam_unique_pop:m_4044",
+        "pop:sungnam_unique_pop:m_4549",
+        "pop:sungnam_unique_pop:m_5054",
+        "pop:sungnam_unique_pop:m_5559",
+        "pop:sungnam_unique_pop:m_6064",
+        "pop:sungnam_unique_pop:m_6569",
+        "pop:sungnam_unique_pop:m_70u",
+        "pop:sungnam_unique_pop:w_0009",
+        "pop:sungnam_unique_pop:w_1014",
+        "pop:sungnam_unique_pop:w_1519",
+        "pop:sungnam_unique_pop:w_2024",
+        "pop:sungnam_unique_pop:w_2529",
+        "pop:sungnam_unique_pop:w_3034",
+        "pop:sungnam_unique_pop:w_3539",
+        "pop:sungnam_unique_pop:w_4044",
+        "pop:sungnam_unique_pop:w_4549",
+        "pop:sungnam_unique_pop:w_5054",
+        "pop:sungnam_unique_pop:w_5559",
+        "pop:sungnam_unique_pop:w_6064",
+        "pop:sungnam_unique_pop:w_6569",
+        "pop:sungnam_unique_pop:w_70u"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1529 @@
+{
+  "@context": {
+    "pop": "http://example.org/ontology/population#",
+    "schema": "http://schema.org/",
+    "Relation": "schema:Relation",
+    "Dataset": "schema:Dataset",
+    "Dimension": "pop:Dimension",
+    "Measure": "pop:Measure",
+    "name": "schema:name",
+    "description": "schema:description",
+    "table": "pop:table",
+    "column": "pop:column",
+    "semanticTag": "pop:semanticTag",
+    "role": "pop:role",
+    "source": {
+      "@id": "pop:source",
+      "@type": "@id"
+    },
+    "target": {
+      "@id": "pop:target",
+      "@type": "@id"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "pop:dimension:time",
+      "@type": "Dimension",
+      "name": "Time Dimension"
+    },
+    {
+      "@id": "pop:dimension:location",
+      "@type": "Dimension",
+      "name": "Location Dimension"
+    },
+    {
+      "@id": "pop:dimension:sex_age",
+      "@type": "Dimension",
+      "name": "SexAge Dimension"
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop",
+      "@type": "Dataset",
+      "name": "행정동별 유입지별 서비스인구",
+      "table": "sungnam_service_inflow_pop"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop",
+      "@type": "Dataset",
+      "name": "CELL단위 시간대별 서비스인구",
+      "table": "sungnam_service_pcell_pop"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop",
+      "@type": "Dataset",
+      "name": "CELL단위 성연령별 서비스인구",
+      "table": "sungnam_service_pcell_sex_age_pop"
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop",
+      "@type": "Dataset",
+      "name": "행정동별 성연령별 서비스인구",
+      "table": "sungnam_service_sex_age_pop"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop",
+      "@type": "Dataset",
+      "name": "시군구단위 유니크인구",
+      "table": "sungnam_unique_pop"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_inflow_pop:std_ym:time",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_inflow_pop",
+      "target": "pop:dimension:time"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_inflow_pop:std_ymd:time",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_inflow_pop",
+      "target": "pop:dimension:time"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_inflow_pop:time:time",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_inflow_pop",
+      "target": "pop:dimension:time"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_inflow_pop:inflow_cd:location",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_inflow_pop",
+      "target": "pop:dimension:location"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_inflow_pop:hcode:location",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_inflow_pop",
+      "target": "pop:dimension:location"
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop:h_pop",
+      "@type": "Measure",
+      "name": "h_pop",
+      "table": "sungnam_service_inflow_pop",
+      "column": "h_pop",
+      "description": "주거인구(야간체류지)"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_inflow_pop:h_pop:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_inflow_pop",
+      "target": "pop:sungnam_service_inflow_pop:h_pop"
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop:w_pop",
+      "@type": "Measure",
+      "name": "w_pop",
+      "table": "sungnam_service_inflow_pop",
+      "column": "w_pop",
+      "description": "직장인구(주간체류지)"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_inflow_pop:w_pop:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_inflow_pop",
+      "target": "pop:sungnam_service_inflow_pop:w_pop"
+    },
+    {
+      "@id": "pop:sungnam_service_inflow_pop:v_pop",
+      "@type": "Measure",
+      "name": "v_pop",
+      "table": "sungnam_service_inflow_pop",
+      "column": "v_pop",
+      "description": "방문인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_inflow_pop:v_pop:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_inflow_pop",
+      "target": "pop:sungnam_service_inflow_pop:v_pop"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:std_ym:time",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:dimension:time"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:std_ymd:time",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:dimension:time"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:hcode:location",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:dimension:location"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_00",
+      "@type": "Measure",
+      "name": "time_00",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_00",
+      "description": "00시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_00:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_00"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_01",
+      "@type": "Measure",
+      "name": "time_01",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_01",
+      "description": "01시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_01:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_01"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_02",
+      "@type": "Measure",
+      "name": "time_02",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_02",
+      "description": "02시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_02:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_02"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_03",
+      "@type": "Measure",
+      "name": "time_03",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_03",
+      "description": "03시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_03:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_03"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_04",
+      "@type": "Measure",
+      "name": "time_04",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_04",
+      "description": "04시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_04:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_04"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_05",
+      "@type": "Measure",
+      "name": "time_05",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_05",
+      "description": "05시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_05:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_05"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_06",
+      "@type": "Measure",
+      "name": "time_06",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_06",
+      "description": "06시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_06:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_06"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_07",
+      "@type": "Measure",
+      "name": "time_07",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_07",
+      "description": "07시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_07:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_07"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_08",
+      "@type": "Measure",
+      "name": "time_08",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_08",
+      "description": "08시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_08:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_08"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_09",
+      "@type": "Measure",
+      "name": "time_09",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_09",
+      "description": "09시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_09:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_09"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_10",
+      "@type": "Measure",
+      "name": "time_10",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_10",
+      "description": "10시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_10:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_10"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_11",
+      "@type": "Measure",
+      "name": "time_11",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_11",
+      "description": "11시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_11:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_11"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_12",
+      "@type": "Measure",
+      "name": "time_12",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_12",
+      "description": "12시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_12:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_12"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_13",
+      "@type": "Measure",
+      "name": "time_13",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_13",
+      "description": "13시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_13:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_13"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_14",
+      "@type": "Measure",
+      "name": "time_14",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_14",
+      "description": "14시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_14:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_14"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_15",
+      "@type": "Measure",
+      "name": "time_15",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_15",
+      "description": "15시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_15:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_15"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_16",
+      "@type": "Measure",
+      "name": "time_16",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_16",
+      "description": "16시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_16:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_16"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_17",
+      "@type": "Measure",
+      "name": "time_17",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_17",
+      "description": "17시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_17:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_17"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_18",
+      "@type": "Measure",
+      "name": "time_18",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_18",
+      "description": "18시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_18:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_18"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_19",
+      "@type": "Measure",
+      "name": "time_19",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_19",
+      "description": "19시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_19:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_19"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_20",
+      "@type": "Measure",
+      "name": "time_20",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_20",
+      "description": "20시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_20:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_20"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_21",
+      "@type": "Measure",
+      "name": "time_21",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_21",
+      "description": "21시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_21:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_21"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_22",
+      "@type": "Measure",
+      "name": "time_22",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_22",
+      "description": "22시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_22:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_22"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_pop:time_23",
+      "@type": "Measure",
+      "name": "time_23",
+      "table": "sungnam_service_pcell_pop",
+      "column": "time_23",
+      "description": "23시 인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:time_23:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:sungnam_service_pcell_pop:time_23"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:x_coord:location",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:dimension:location"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_pop:y_coord:location",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_pcell_pop",
+      "target": "pop:dimension:location"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:std_ym:time",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:dimension:time"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:std_ymd:time",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:dimension:time"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:hcode:location",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:dimension:location"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_0009",
+      "@type": "Measure",
+      "name": "m_0009",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_0009",
+      "description": "남자00세~09세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_0009:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_0009"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_1014",
+      "@type": "Measure",
+      "name": "m_1014",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_1014",
+      "description": "남자10세~14세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_1014:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_1014"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_1519",
+      "@type": "Measure",
+      "name": "m_1519",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_1519",
+      "description": "남자15세~19세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_1519:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_1519"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_2024",
+      "@type": "Measure",
+      "name": "m_2024",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_2024",
+      "description": "남자20세~24세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_2024:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_2024"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_2529",
+      "@type": "Measure",
+      "name": "m_2529",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_2529",
+      "description": "남자25세~29세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_2529:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_2529"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_3034",
+      "@type": "Measure",
+      "name": "m_3034",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_3034",
+      "description": "남자30세~34세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_3034:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_3034"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_3539",
+      "@type": "Measure",
+      "name": "m_3539",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_3539",
+      "description": "남자35세~39세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_3539:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_3539"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_4044",
+      "@type": "Measure",
+      "name": "m_4044",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_4044",
+      "description": "남자40세~44세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_4044:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_4044"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_4549",
+      "@type": "Measure",
+      "name": "m_4549",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_4549",
+      "description": "남자45세~49세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_4549:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_4549"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_5054",
+      "@type": "Measure",
+      "name": "m_5054",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_5054",
+      "description": "남자50세~54세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_5054:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_5054"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_5559",
+      "@type": "Measure",
+      "name": "m_5559",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_5559",
+      "description": "남자55세~59세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_5559:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_5559"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_6064",
+      "@type": "Measure",
+      "name": "m_6064",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_6064",
+      "description": "남자60세~64세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_6064:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_6064"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_6569",
+      "@type": "Measure",
+      "name": "m_6569",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_6569",
+      "description": "남자65세~69세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_6569:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_6569"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:m_7000",
+      "@type": "Measure",
+      "name": "m_7000",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "m_7000",
+      "description": "남자70세~00세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:m_7000:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:m_7000"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_0009",
+      "@type": "Measure",
+      "name": "w_0009",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_0009",
+      "description": "여자00세~09세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_0009:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_0009"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_1014",
+      "@type": "Measure",
+      "name": "w_1014",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_1014",
+      "description": "여자10세~14세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_1014:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_1014"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_1519",
+      "@type": "Measure",
+      "name": "w_1519",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_1519",
+      "description": "여자15세~19세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_1519:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_1519"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_2024",
+      "@type": "Measure",
+      "name": "w_2024",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_2024",
+      "description": "여자20세~24세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_2024:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_2024"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_2529",
+      "@type": "Measure",
+      "name": "w_2529",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_2529",
+      "description": "여자25세~29세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_2529:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_2529"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_3034",
+      "@type": "Measure",
+      "name": "w_3034",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_3034",
+      "description": "여자30세~34세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_3034:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_3034"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_3539",
+      "@type": "Measure",
+      "name": "w_3539",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_3539",
+      "description": "여자35세~39세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_3539:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_3539"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_4044",
+      "@type": "Measure",
+      "name": "w_4044",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_4044",
+      "description": "여자40세~44세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_4044:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_4044"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_4549",
+      "@type": "Measure",
+      "name": "w_4549",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_4549",
+      "description": "여자45세~49세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_4549:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_4549"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_5054",
+      "@type": "Measure",
+      "name": "w_5054",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_5054",
+      "description": "여자50세~54세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_5054:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_5054"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_5559",
+      "@type": "Measure",
+      "name": "w_5559",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_5559",
+      "description": "여자55세~59세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_5559:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_5559"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_6064",
+      "@type": "Measure",
+      "name": "w_6064",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_6064",
+      "description": "여자60세~64세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_6064:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_6064"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_6569",
+      "@type": "Measure",
+      "name": "w_6569",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_6569",
+      "description": "여자65세~69세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_6569:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_6569"
+    },
+    {
+      "@id": "pop:sungnam_service_pcell_sex_age_pop:w_7000",
+      "@type": "Measure",
+      "name": "w_7000",
+      "table": "sungnam_service_pcell_sex_age_pop",
+      "column": "w_7000",
+      "description": "여자70세~00세"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:w_7000:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:sungnam_service_pcell_sex_age_pop:w_7000"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:x_coord:location",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:dimension:location"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_pcell_sex_age_pop:y_coord:location",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_pcell_sex_age_pop",
+      "target": "pop:dimension:location"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_sex_age_pop:std_ym:time",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_sex_age_pop",
+      "target": "pop:dimension:time"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_sex_age_pop:std_ymd:time",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_sex_age_pop",
+      "target": "pop:dimension:time"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_sex_age_pop:time:time",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_sex_age_pop",
+      "target": "pop:dimension:time"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_sex_age_pop:sex_age:sex_age",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_sex_age_pop",
+      "target": "pop:dimension:sex_age"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_sex_age_pop:hcode:location",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_service_sex_age_pop",
+      "target": "pop:dimension:location"
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop:h_pop",
+      "@type": "Measure",
+      "name": "h_pop",
+      "table": "sungnam_service_sex_age_pop",
+      "column": "h_pop",
+      "description": "주거인구(야간체류지)"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_sex_age_pop:h_pop:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_sex_age_pop",
+      "target": "pop:sungnam_service_sex_age_pop:h_pop"
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop:w_pop",
+      "@type": "Measure",
+      "name": "w_pop",
+      "table": "sungnam_service_sex_age_pop",
+      "column": "w_pop",
+      "description": "직장인구(주간체류지)"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_sex_age_pop:w_pop:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_sex_age_pop",
+      "target": "pop:sungnam_service_sex_age_pop:w_pop"
+    },
+    {
+      "@id": "pop:sungnam_service_sex_age_pop:v_pop",
+      "@type": "Measure",
+      "name": "v_pop",
+      "table": "sungnam_service_sex_age_pop",
+      "column": "v_pop",
+      "description": "방문인구"
+    },
+    {
+      "@id": "pop:rel:sungnam_service_sex_age_pop:v_pop:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_service_sex_age_pop",
+      "target": "pop:sungnam_service_sex_age_pop:v_pop"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:std_ym:time",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:dimension:time"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:std_ymd:time",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:dimension:time"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:sgng_cd:location",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:dimension:location"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:inflow_cd:location",
+      "@type": "Relation",
+      "role": "uses_dimension",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:dimension:location"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_0009",
+      "@type": "Measure",
+      "name": "m_0009",
+      "table": "sungnam_unique_pop",
+      "column": "m_0009",
+      "description": "남자00세~09세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_0009:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_0009"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_1014",
+      "@type": "Measure",
+      "name": "m_1014",
+      "table": "sungnam_unique_pop",
+      "column": "m_1014",
+      "description": "남자10세~14세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_1014:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_1014"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_1519",
+      "@type": "Measure",
+      "name": "m_1519",
+      "table": "sungnam_unique_pop",
+      "column": "m_1519",
+      "description": "남자15세~19세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_1519:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_1519"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_2024",
+      "@type": "Measure",
+      "name": "m_2024",
+      "table": "sungnam_unique_pop",
+      "column": "m_2024",
+      "description": "남자20세~24세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_2024:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_2024"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_2529",
+      "@type": "Measure",
+      "name": "m_2529",
+      "table": "sungnam_unique_pop",
+      "column": "m_2529",
+      "description": "남자25세~29세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_2529:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_2529"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_3034",
+      "@type": "Measure",
+      "name": "m_3034",
+      "table": "sungnam_unique_pop",
+      "column": "m_3034",
+      "description": "남자30세~34세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_3034:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_3034"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_3539",
+      "@type": "Measure",
+      "name": "m_3539",
+      "table": "sungnam_unique_pop",
+      "column": "m_3539",
+      "description": "남자35세~39세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_3539:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_3539"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_4044",
+      "@type": "Measure",
+      "name": "m_4044",
+      "table": "sungnam_unique_pop",
+      "column": "m_4044",
+      "description": "남자40세~44세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_4044:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_4044"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_4549",
+      "@type": "Measure",
+      "name": "m_4549",
+      "table": "sungnam_unique_pop",
+      "column": "m_4549",
+      "description": "남자45세~49세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_4549:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_4549"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_5054",
+      "@type": "Measure",
+      "name": "m_5054",
+      "table": "sungnam_unique_pop",
+      "column": "m_5054",
+      "description": "남자50세~54세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_5054:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_5054"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_5559",
+      "@type": "Measure",
+      "name": "m_5559",
+      "table": "sungnam_unique_pop",
+      "column": "m_5559",
+      "description": "남자55세~59세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_5559:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_5559"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_6064",
+      "@type": "Measure",
+      "name": "m_6064",
+      "table": "sungnam_unique_pop",
+      "column": "m_6064",
+      "description": "남자60세~64세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_6064:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_6064"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_6569",
+      "@type": "Measure",
+      "name": "m_6569",
+      "table": "sungnam_unique_pop",
+      "column": "m_6569",
+      "description": "남자65세~69세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_6569:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_6569"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:m_70u",
+      "@type": "Measure",
+      "name": "m_70u",
+      "table": "sungnam_unique_pop",
+      "column": "m_70u",
+      "description": "남자70세이상"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:m_70u:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:m_70u"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_0009",
+      "@type": "Measure",
+      "name": "w_0009",
+      "table": "sungnam_unique_pop",
+      "column": "w_0009",
+      "description": "여자00세~09세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_0009:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_0009"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_1014",
+      "@type": "Measure",
+      "name": "w_1014",
+      "table": "sungnam_unique_pop",
+      "column": "w_1014",
+      "description": "여자10세~14세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_1014:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_1014"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_1519",
+      "@type": "Measure",
+      "name": "w_1519",
+      "table": "sungnam_unique_pop",
+      "column": "w_1519",
+      "description": "여자15세~19세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_1519:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_1519"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_2024",
+      "@type": "Measure",
+      "name": "w_2024",
+      "table": "sungnam_unique_pop",
+      "column": "w_2024",
+      "description": "여자20세~24세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_2024:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_2024"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_2529",
+      "@type": "Measure",
+      "name": "w_2529",
+      "table": "sungnam_unique_pop",
+      "column": "w_2529",
+      "description": "여자25세~29세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_2529:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_2529"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_3034",
+      "@type": "Measure",
+      "name": "w_3034",
+      "table": "sungnam_unique_pop",
+      "column": "w_3034",
+      "description": "여자30세~34세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_3034:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_3034"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_3539",
+      "@type": "Measure",
+      "name": "w_3539",
+      "table": "sungnam_unique_pop",
+      "column": "w_3539",
+      "description": "여자35세~39세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_3539:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_3539"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_4044",
+      "@type": "Measure",
+      "name": "w_4044",
+      "table": "sungnam_unique_pop",
+      "column": "w_4044",
+      "description": "여자40세~44세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_4044:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_4044"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_4549",
+      "@type": "Measure",
+      "name": "w_4549",
+      "table": "sungnam_unique_pop",
+      "column": "w_4549",
+      "description": "여자45세~49세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_4549:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_4549"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_5054",
+      "@type": "Measure",
+      "name": "w_5054",
+      "table": "sungnam_unique_pop",
+      "column": "w_5054",
+      "description": "여자50세~54세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_5054:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_5054"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_5559",
+      "@type": "Measure",
+      "name": "w_5559",
+      "table": "sungnam_unique_pop",
+      "column": "w_5559",
+      "description": "여자55세~59세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_5559:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_5559"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_6064",
+      "@type": "Measure",
+      "name": "w_6064",
+      "table": "sungnam_unique_pop",
+      "column": "w_6064",
+      "description": "여자60세~64세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_6064:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_6064"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_6569",
+      "@type": "Measure",
+      "name": "w_6569",
+      "table": "sungnam_unique_pop",
+      "column": "w_6569",
+      "description": "여자65세~69세"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_6569:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_6569"
+    },
+    {
+      "@id": "pop:sungnam_unique_pop:w_70u",
+      "@type": "Measure",
+      "name": "w_70u",
+      "table": "sungnam_unique_pop",
+      "column": "w_70u",
+      "description": "여자70세이상"
+    },
+    {
+      "@id": "pop:rel:sungnam_unique_pop:w_70u:measure",
+      "@type": "Relation",
+      "role": "has_measure",
+      "source": "pop:sungnam_unique_pop",
+      "target": "pop:sungnam_unique_pop:w_70u"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "question": "2025년 9월 2일 성남시 유입인구 요약 (Mock)",
+    "plan": {
+      "original_question": "2025년 9월 2일 성남시 유입인구 요약 (Mock)",
+      "intent": "SEARCH",
+      "dataset": "sungnam_service_inflow_pop",
+      "visualization_type": "single_value",
+      "notes": "This is a mock response."
+    },
+    "sql": "SELECT SUM(t.h_pop) AS h_pop, SUM(t.w_pop) AS w_pop, SUM(t.v_pop) AS v_pop FROM sungnam_service_inflow_pop AS t WHERE t.std_ymd = '20250902';",
+    "rows": [
+      {
+        "h_pop": 987654,
+        "w_pop": 1215080,
+        "v_pop": 2202734
+      }
+    ],
+    "insight": {
+      "summary": "성남시의 2025년 9월 2일 유입인구는 총 2,202,734명으로 집계되었습니다."
+    }
+  }
+]
