@@ -75,7 +75,8 @@ def test_build_sql_request(mock_semantic_layer_files, dummy_plan):
     request_payload = build_sql_request(dummy_plan, SEMANTIC_MAPPING_PATH, SQL_SCHEMA_PATH)
     user_message_content = request_payload["messages"][1]["content"]
 
-    assert "You are an NLQ SQL planner. Build a read-only SELECT query." in request_payload["messages"][0]["content"]
+    assert "You are an expert SQL generator for PostgreSQL." in request_payload["messages"][0]["content"]
+    assert "simple, flat, table-based SELECT queries" in request_payload["messages"][0]["content"]
     assert "Original question: 테스트 테이블 1에서 값1을 보여줘" in user_message_content
     assert "Dataset: test_table_1" in user_message_content
     assert "Columns: std_ymd, value1" in user_message_content # From dummy semantic mapping

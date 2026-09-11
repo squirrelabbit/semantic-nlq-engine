@@ -74,7 +74,7 @@ def test_build_plan_request_l1_context(mock_semantic_layer_files, dummy_semantic
     expected_l1_context_from_builder = build_l1_context(dummy_semantic_mapping)
     assert expected_l1_context_from_builder in user_message_content
 
-    assert "You are an NLQ planner. Select 2-3 candidate datasets to answer the question" in request["messages"][0]["content"]
+    assert "You are an NLQ planner. Select the single best dataset" in request["messages"][0]["content"]
     assert "Schema:\n" in user_message_content
     assert json.loads(PLAN_L1_SCHEMA_PATH.read_text()) == json.loads(user_message_content.split("Schema:\n")[1])
 

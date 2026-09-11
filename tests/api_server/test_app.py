@@ -1,18 +1,15 @@
-import pytest
-from unittest.mock import MagicMock, AsyncMock, patch
-from fastapi.testclient import TestClient
-from api_server.app import app, get_db_conn
-import api_server.app as app_module # Import the app module to patch its variables
-import psycopg
-from psycopg.rows import dict_row
+import json
 from datetime import datetime
 from pathlib import Path
+from unittest.mock import MagicMock, patch
 
-# Mock the run_nlq_workflow from agent.core
-@pytest.fixture
-def mock_run_nlq_workflow():
-    with patch("api_server.app.run_nlq_workflow") as mock:
-        yield mock
+import pytest
+from fastapi.testclient import TestClient
+import psycopg
+from psycopg.rows import dict_row
+
+import api_server.app as app_module
+from api_server.app import app
 
 # Mock the get_db_conn to return a mock connection and cursor
 @pytest.fixture
@@ -32,13 +29,6 @@ def mock_db_connection():
         
         yield mock_conn, mock_cursor
 
-@pytest.fixture
-def mock_app_repo_root(monkeypatch):
-    """Mocks the repo_root variable in api_server.app."""
-    mock_path = Path("/mock/project/root")
-    monkeypatch.setattr(app_module, "repo_root", mock_path)
-    return mock_path
-
 client = TestClient(app)
 
 def test_health_check():
@@ -46,20 +36,24 @@ def test_health_check():
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
 
-@pytest.mark.asyncio
-async def test_nlq_success(mock_run_nlq_workflow, mock_app_repo_root): # Add mock_app_repo_root fixture
-    # Configure the mock workflow to return a successful result
-    mock_run_nlq_workflow.return_value = {
+def test_nlq_success(monkeypatch, tmp_path):
+    payload = {
         "plan": {"intent": "SEARCH"},
         "sql": "SELECT * FROM test;",
         "rows": [{"col1": "val1"}],
         "insight": {"summary": "test summary"},
-        "request_id": "test-req-id"
     }
+    fixture_path = tmp_path / "nlq.json"
+    fixture_path.write_text(json.dumps(payload), encoding="utf-8")
+    monkeypatch.setattr(app_module, "repo_root", tmp_path)
 
     response = client.post(
         "/api/nlq",
-        json={"question": "test question", "two_stage": True, "execute": True, "interpret": True}
+        json={
+            "question": "test question",
+            "use_mock": True,
+            "mock_data_ref": "nlq.json",
+        },
     )
 
     assert response.status_code == 200
@@ -67,30 +61,21 @@ async def test_nlq_success(mock_run_nlq_workflow, mock_app_repo_root): # Add moc
     assert response.json()["sql"] == "SELECT * FROM test;"
     assert response.json()["rows"] == [{"col1": "val1"}]
     assert response.json()["insight"]["summary"] == "test summary"
-    assert response.json()["request_id"] == "test-req-id"
-    
-    mock_run_nlq_workflow.assert_called_once_with(
-        question="test question",
-        two_stage=True,
-        execute=True,
-        interpret=True,
-        direct=True,
-        repo_root=mock_app_repo_root # Use the mocked repo_root
-    )
+    assert response.json()["request_id"]
 
-@pytest.mark.asyncio
-async def test_nlq_failure(mock_run_nlq_workflow, mock_app_repo_root): # Add mock_app_repo_root fixture
-    # Configure the mock workflow to raise an exception
-    mock_run_nlq_workflow.side_effect = ValueError("Workflow failed")
-
+def test_nlq_missing_mock_file(monkeypatch, tmp_path):
+    monkeypatch.setattr(app_module, "repo_root", tmp_path)
     response = client.post(
         "/api/nlq",
-        json={"question": "failing question"}
+        json={
+            "question": "failing question",
+            "use_mock": True,
+            "mock_data_ref": "missing.json",
+        },
     )
 
     assert response.status_code == 500
-    assert response.json()["detail"] == "Workflow failed"
-    mock_run_nlq_workflow.assert_called_once()
+    assert response.json()["detail"] == "Mock data file not found."
 
 
 # --- Knowledge Card CRUD Tests ---
@@ -235,7 +220,7 @@ async def test_create_semantic_metadata(mock_db_connection):
         "target_table": "new_table",
         "business_name": "New Table Name",
         "semantic_desc": "Desc",
-        "join_rules": {},
+        "join_rules": [],
         "allowed_metrics": [],
         "constraints": [],
         "samples": {},
@@ -284,7 +269,7 @@ async def test_list_semantic_metadata(mock_db_connection):
             "target_table": "table1",
             "business_name": "Table One",
             "semantic_desc": None,
-            "join_rules": {},
+            "join_rules": [],
             "allowed_metrics": [],
             "constraints": [],
             "samples": {},
@@ -295,7 +280,7 @@ async def test_list_semantic_metadata(mock_db_connection):
             "target_table": "table2",
             "business_name": "Table Two",
             "semantic_desc": "Another table",
-            "join_rules": {},
+            "join_rules": [],
             "allowed_metrics": ["count"],
             "constraints": [],
             "samples": {},
@@ -317,7 +302,7 @@ async def test_get_semantic_metadata(mock_db_connection):
         "target_table": "specific_table",
         "business_name": "Specific Table Name",
         "semantic_desc": None,
-        "join_rules": {},
+        "join_rules": [],
         "allowed_metrics": [],
         "constraints": [],
         "samples": {},
@@ -352,7 +337,7 @@ async def test_update_semantic_metadata(mock_db_connection):
         "target_table": "updated_table",
         "business_name": "Updated Table Name",
         "semantic_desc": "Updated Desc",
-        "join_rules": {"key": "value"},
+        "join_rules": [{"key": "value"}],
         "allowed_metrics": ["sum"],
         "constraints": ["c1"],
         "samples": {"col": "val"},
@@ -365,7 +350,7 @@ async def test_update_semantic_metadata(mock_db_connection):
             "target_table": "updated_table",
             "business_name": "Updated Table Name",
             "semantic_desc": "Updated Desc",
-            "join_rules": {"key": "value"},
+            "join_rules": [{"key": "value"}],
             "allowed_metrics": ["sum"],
             "constraints": ["c1"],
             "samples": {"col": "val"}

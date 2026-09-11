@@ -179,11 +179,6 @@ class NLQRequest(BaseModel):
     mock_data_ref: Optional[str] = None
     mock_planner_file: Optional[str] = None
     mock_coder_file: Optional[str] = None
-    use_mock: bool = False
-    mock_planner_file: Optional[str] = None
-    mock_coder_file: Optional[str] = None
-    mock_planner_file: Optional[str] = None
-    mock_coder_file: Optional[str] = None
 
 
 class NLQResponse(BaseModel):
@@ -197,8 +192,8 @@ class NLQResponse(BaseModel):
 class KnowledgeCardCreate(BaseModel):
     title: str
     summary: str
-    tags: Optional[List[str]] = []
-    sources: Optional[List[str]] = []
+    tags: List[str] = Field(default_factory=list)
+    sources: List[str] = Field(default_factory=list)
 
 class KnowledgeCard(KnowledgeCardCreate):
     id: int
